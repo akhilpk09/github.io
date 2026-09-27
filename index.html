@@ -3,133 +3,144 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="My Spend - Personal finance, expense, income, credit card, EMI and Udhar management app.">
-
-    <meta name="theme-color" content="#4f46e5">
-
-    <title>My Spend – Personal Finance Manager</title>
+    <title>justbuilt.in</title>
+    <meta name="description" content="justbuilt.in - Applications, projects and digital solutions.">
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            margin: 0;
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #1f2937;
             line-height: 1.6;
-            color: #202124;
-            background: #f5f7fb;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
+        /* NAVBAR */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.96);
+            background: #ffffff;
             border-bottom: 1px solid #e5e7eb;
-            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .nav-container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
-            padding: 15px 20px;
+            padding: 0 20px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 22px;
-            font-weight: 700;
+        .logo {
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: 800;
             color: #111827;
         }
 
-        .brand-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: #4f46e5;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            color: #4b5563;
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
+        .logo span {
             color: #4f46e5;
         }
 
-        .hero {
-            padding: 90px 20px 80px;
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #ffffff
-                );
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
         }
 
-        .hero-container {
-            max-width: 1100px;
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        /* DROPDOWN */
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 220px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            padding: 8px;
+            list-style: none;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 11px 13px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a:hover {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1150px;
             margin: auto;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 55px;
-            align-items: center;
+            padding: 100px 20px 90px;
+            text-align: center;
         }
 
         .hero-badge {
             display: inline-block;
-            padding: 7px 13px;
-            border-radius: 20px;
-            background: #e0e7ff;
-            color: #3730a3;
-            font-size: 13px;
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
         }
 
         .hero h1 {
             font-size: 52px;
-            line-height: 1.1;
-            margin: 0 0 20px;
+            line-height: 1.15;
+            margin-bottom: 22px;
             color: #111827;
         }
 
@@ -138,129 +149,54 @@
         }
 
         .hero p {
+            max-width: 700px;
+            margin: auto;
             font-size: 19px;
-            color: #4b5563;
-            max-width: 650px;
-            margin-bottom: 30px;
+            color: #6b7280;
         }
 
         .hero-buttons {
+            margin-top: 35px;
             display: flex;
-            gap: 12px;
+            justify-content: center;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
-        .button {
+        .btn {
             display: inline-block;
-            padding: 13px 22px;
-            border-radius: 9px;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
             transition: 0.2s;
         }
 
-        .button-primary {
+        .btn-primary {
             background: #4f46e5;
             color: white;
         }
 
-        .button-primary:hover {
+        .btn-primary:hover {
             background: #4338ca;
+            transform: translateY(-1px);
         }
 
-        .button-secondary {
+        .btn-secondary {
             background: white;
             color: #374151;
             border: 1px solid #d1d5db;
         }
 
-        .button-secondary:hover {
-            border-color: #4f46e5;
-            color: #4f46e5;
+        .btn-secondary:hover {
+            background: #f3f4f6;
         }
 
-        .phone-card {
-            background: white;
-            border-radius: 25px;
-            padding: 18px;
-            max-width: 330px;
+        /* APPLICATION */
+        .section {
+            max-width: 1150px;
             margin: auto;
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.12);
-            border: 1px solid #e5e7eb;
-        }
-
-        .phone-screen {
-            border-radius: 18px;
-            background: #f8fafc;
-            overflow: hidden;
-        }
-
-        .phone-header {
-            background: #4f46e5;
-            color: white;
-            padding: 22px 18px;
-        }
-
-        .phone-header small {
-            opacity: 0.8;
-        }
-
-        .phone-header h3 {
-            margin: 5px 0 0;
-            font-size: 23px;
-        }
-
-        .balance-card {
-            margin: 15px;
-            padding: 18px;
-            background: white;
-            border-radius: 14px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-        }
-
-        .balance-card small {
-            color: #6b7280;
-        }
-
-        .balance {
-            font-size: 27px;
-            font-weight: 700;
-            margin-top: 5px;
-        }
-
-        .transaction {
-            margin: 10px 15px;
-            padding: 13px;
-            background: white;
-            border-radius: 11px;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            font-size: 13px;
-        }
-
-        .transaction-name {
-            font-weight: 700;
-        }
-
-        .expense {
-            color: #dc2626;
-            font-weight: 700;
-        }
-
-        .income {
-            color: #15803d;
-            font-weight: 700;
-        }
-
-        section {
-            padding: 75px 20px;
-        }
-
-        .section-container {
-            max-width: 1100px;
-            margin: auto;
+            padding: 70px 20px;
         }
 
         .section-title {
@@ -269,229 +205,129 @@
         }
 
         .section-title h2 {
-            margin: 0 0 10px;
             font-size: 34px;
             color: #111827;
+            margin-bottom: 10px;
         }
 
         .section-title p {
-            margin: 0 auto;
-            max-width: 680px;
             color: #6b7280;
         }
 
-        .features {
+        .app-card {
             background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
         }
 
-        .feature-grid {
+        .app-info {
+            flex: 1;
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: #eef2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        .app-info h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .app-info p {
+            color: #6b7280;
+            margin-bottom: 22px;
+            max-width: 650px;
+        }
+
+        .app-link {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .app-link:hover {
+            background: #4338ca;
+        }
+
+        /* FEATURES */
+        .features {
             display: grid;
-            grid-template-columns:
-                repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
         .feature-card {
-            padding: 25px;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            background: #ffffff;
-            transition: 0.2s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.07);
-        }
-
-        .feature-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 11px;
-            background: #eef2ff;
-            color: #4f46e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h3 {
-            margin: 0 0 8px;
-            font-size: 19px;
-        }
-
-        .feature-card p {
-            margin: 0;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .feature-card ul {
-            margin: 13px 0 0;
-            padding-left: 20px;
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .feature-card li {
-            margin-bottom: 5px;
-        }
-
-        .security {
-            background: #f8fafc;
-        }
-
-        .security-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .security-card {
-            padding: 28px;
             background: white;
+            padding: 25px;
             border-radius: 15px;
             border: 1px solid #e5e7eb;
         }
 
-        .security-card h3 {
-            margin-top: 0;
+        .feature-card h3 {
+            margin-bottom: 8px;
+            color: #111827;
         }
 
-        .security-card p {
+        .feature-card p {
             color: #6b7280;
             font-size: 15px;
         }
 
-        .permissions {
-            background: white;
-        }
-
-        .permission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .permission-table th,
-        .permission-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .permission-table th {
-            background: #f8fafc;
-            font-size: 14px;
-        }
-
-        .permission-table td {
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        .permission-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .cta {
-            background: #4f46e5;
-            color: white;
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 35px;
-            margin: 0 0 12px;
-        }
-
-        .cta p {
-            max-width: 650px;
-            margin: 0 auto 25px;
-            opacity: 0.9;
-        }
-
-        .cta .button {
-            background: white;
-            color: #4f46e5;
-        }
-
-        .legal {
-            background: #ffffff;
-        }
-
-        .legal-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .legal-card {
-            padding: 25px;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-        }
-
-        .legal-card h3 {
-            margin-top: 0;
-        }
-
-        .legal-card p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .legal-card a {
-            color: #4f46e5;
-            font-weight: 700;
-        }
-
+        /* FOOTER */
         footer {
+            margin-top: 60px;
             background: #111827;
             color: #d1d5db;
-            padding: 35px 20px;
         }
 
         .footer-container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
+            padding: 45px 20px;
             display: flex;
             justify-content: space-between;
             gap: 30px;
             flex-wrap: wrap;
         }
 
-        .footer-brand {
-            font-size: 20px;
-            font-weight: 700;
+        .footer-brand h3 {
             color: white;
+            margin-bottom: 10px;
         }
 
-        .footer-text {
-            max-width: 500px;
-            font-size: 14px;
+        .footer-brand p {
+            max-width: 450px;
             color: #9ca3af;
         }
 
         .footer-links {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .footer-links a {
             color: #d1d5db;
-            font-size: 14px;
+            text-decoration: none;
         }
 
         .footer-links a:hover {
@@ -499,85 +335,57 @@
         }
 
         .copyright {
-            max-width: 1100px;
-            margin: 25px auto 0;
-            padding-top: 20px;
             border-top: 1px solid #374151;
+            text-align: center;
+            padding: 20px;
             color: #9ca3af;
-            font-size: 13px;
+            font-size: 14px;
         }
 
-        @media (max-width: 850px) {
-
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 60px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .feature-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .security-grid,
-            .legal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
+        /* MOBILE */
+        @media (max-width: 768px) {
 
             .nav-container {
-                padding: 12px 15px;
-            }
-
-            .nav-links {
+                height: auto;
+                padding-top: 14px;
+                padding-bottom: 14px;
+                flex-direction: column;
                 gap: 10px;
             }
 
-            .nav-links a {
-                font-size: 12px;
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .brand {
-                font-size: 19px;
-            }
-
-            .brand-icon {
-                width: 34px;
-                height: 34px;
+            .hero {
+                padding: 70px 20px;
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 38px;
             }
 
             .hero p {
                 font-size: 17px;
             }
 
-            .feature-grid {
+            .app-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .features {
                 grid-template-columns: 1fr;
             }
 
-            .permission-table {
-                font-size: 12px;
+            .dropdown-menu {
+                left: 50%;
+                transform: translate(-50%, -8px);
             }
 
-            .permission-table th,
-            .permission-table td {
-                padding: 10px;
-            }
-
-            section {
-                padding: 55px 15px;
+            .dropdown:hover .dropdown-menu {
+                transform: translate(-50%, 0);
             }
         }
     </style>
@@ -585,811 +393,285 @@
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
 
-<nav class="navbar">
-
-    <div class="nav-container">
-
-        <a href="#home" class="brand">
-
-            <div class="brand-icon">
-                ₹
-            </div>
-
-            <span>My Spend</span>
-
-        </a>
-
-        <div class="nav-links">
-
-            <a href="#features">
-                Features
+            <a href="/" class="logo">
+                justbuilt<span>.in</span>
             </a>
 
-            <a href="#security">
-                Security
-            </a>
+            <ul class="nav-menu">
 
-            <a href="#legal">
-                Legal
-            </a>
+                <li>
+                    <a href="/" class="nav-link">Home</a>
+                </li>
 
-        </div>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        Applications ▾
+                    </a>
 
-    </div>
+                    <ul class="dropdown-menu">
 
-</nav>
+                        <li>
+                            <a href="/myspend/">
+                                💰 My Spend
+                            </a>
+                        </li>
 
+                    </ul>
+                </li>
 
-<!-- ================= HERO ================= -->
+                <li>
+                    <a href="#about" class="nav-link">About</a>
+                </li>
 
-<section class="hero" id="home">
+                <li>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
 
-    <div class="hero-container">
-
-        <div>
-
-            <div class="hero-badge">
-                PERSONAL FINANCE MANAGER
-            </div>
-
-            <h1>
-                Manage Your Money
-                <span>Smarter</span>
-            </h1>
-
-            <p>
-                My Spend helps you manage expenses, income, bank accounts,
-                credit cards, EMIs, Udhar, reports, statements, and backups
-                in one place.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#features"
-                   class="button button-primary">
-                    Explore Features
-                </a>
-
-                <a href="#legal"
-                   class="button button-secondary">
-                    Privacy & Terms
-                </a>
-
-            </div>
+            </ul>
 
         </div>
+    </nav>
 
 
-        <!-- Simple app preview -->
+    <!-- HERO -->
+    <section class="hero">
 
-        <div class="phone-card">
-
-            <div class="phone-screen">
-
-                <div class="phone-header">
-
-                    <small>
-                        My Spend
-                    </small>
-
-                    <h3>
-                        Dashboard
-                    </h3>
-
-                </div>
-
-
-                <div class="balance-card">
-
-                    <small>
-                        Total Balance
-                    </small>
-
-                    <div class="balance">
-                        ₹ 25,480
-                    </div>
-
-                </div>
-
-
-                <div class="transaction">
-
-                    <div>
-                        <div class="transaction-name">
-                            Grocery
-                        </div>
-
-                        <small>
-                            Expense
-                        </small>
-                    </div>
-
-                    <div class="expense">
-                        -₹1,250
-                    </div>
-
-                </div>
-
-
-                <div class="transaction">
-
-                    <div>
-                        <div class="transaction-name">
-                            Salary
-                        </div>
-
-                        <small>
-                            Income
-                        </small>
-                    </div>
-
-                    <div class="income">
-                        +₹35,000
-                    </div>
-
-                </div>
-
-
-                <div class="transaction">
-
-                    <div>
-                        <div class="transaction-name">
-                            Credit Card
-                        </div>
-
-                        <small>
-                            Payment
-                        </small>
-                    </div>
-
-                    <div class="expense">
-                        -₹5,000
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="hero-badge">
+            Digital Applications & Projects
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ================= FEATURES ================= -->
-
-<section class="features" id="features">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>
-                Everything You Need
-            </h2>
-
-            <p>
-                My Spend brings everyday personal finance management
-                features together in one application.
-            </p>
-
-        </div>
-
-
-        <div class="feature-grid">
-
-
-            <!-- Dashboard -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    ₹
-                </div>
-
-                <h3>
-                    Khata & Dashboard
-                </h3>
-
-                <p>
-                    Keep track of your financial activity from one dashboard.
-                </p>
-
-                <ul>
-                    <li>Expense & Income</li>
-                    <li>Transfers</li>
-                    <li>Recent Transactions</li>
-                    <li>Search & Refresh</li>
-                    <li>Reports & Charts</li>
-                    <li>Hidden Transactions</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Accounts -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🏦
-                </div>
-
-                <h3>
-                    Accounts
-                </h3>
-
-                <p>
-                    Manage bank, cash, and credit-card accounts.
-                </p>
-
-                <ul>
-                    <li>Bank Accounts</li>
-                    <li>Cash Accounts</li>
-                    <li>Credit Cards</li>
-                    <li>Credit Limits</li>
-                    <li>Available Limits</li>
-                    <li>Due Dates</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Credit Cards -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    💳
-                </div>
-
-                <h3>
-                    Credit Cards
-                </h3>
-
-                <p>
-                    Track credit-card spending and important card details.
-                </p>
-
-                <ul>
-                    <li>Credit Limit</li>
-                    <li>Available Limit</li>
-                    <li>Bill & Due Date</li>
-                    <li>Anniversary Spend</li>
-                    <li>Refund Support</li>
-                    <li>Card Payments</li>
-                </ul>
-
-            </div>
-
-
-            <!-- EMI -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📊
-                </div>
-
-                <h3>
-                    EMI Management
-                </h3>
-
-                <p>
-                    Track EMI schedules and related calculations.
-                </p>
-
-                <ul>
-                    <li>EMI Tenure</li>
-                    <li>Monthly EMI</li>
-                    <li>Reducing-Balance Interest</li>
-                    <li>Processing Fee</li>
-                    <li>Processing Fee GST</li>
-                    <li>Interest GST</li>
-                </ul>
-
-            </div>
-
-
-            <!-- SMS -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📩
-                </div>
-
-                <h3>
-                    SMS Auto Fetch
-                </h3>
-
-                <p>
-                    Detect supported financial transactions from bank and
-                    credit-card SMS messages.
-                </p>
-
-                <ul>
-                    <li>Expense Detection</li>
-                    <li>Income Detection</li>
-                    <li>Account Matching</li>
-                    <li>Category Detection</li>
-                    <li>Duplicate Prevention</li>
-                    <li>Background Processing</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Udhar -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    👥
-                </div>
-
-                <h3>
-                    Udhar & Payees
-                </h3>
-
-                <p>
-                    Keep track of money you give or receive from Payees.
-                </p>
-
-                <ul>
-                    <li>Add Payee</li>
-                    <li>Contacts Selection</li>
-                    <li>You Give / You Got</li>
-                    <li>Running Balance</li>
-                    <li>Due & Overdue</li>
-                    <li>Transaction History</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Import -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📥
-                </div>
-
-                <h3>
-                    Statement Import
-                </h3>
-
-                <p>
-                    Import supported financial statements and compare
-                    transactions.
-                </p>
-
-                <ul>
-                    <li>PDF</li>
-                    <li>CSV</li>
-                    <li>TXT</li>
-                    <li>Excel / XLSX</li>
-                    <li>Dr / Cr Detection</li>
-                    <li>Transaction Comparison</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Export -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    📤
-                </div>
-
-                <h3>
-                    Export
-                </h3>
-
-                <p>
-                    Export your financial records in commonly used formats.
-                </p>
-
-                <ul>
-                    <li>PDF</li>
-                    <li>Excel / XLSX</li>
-                    <li>CSV</li>
-                    <li>Category</li>
-                    <li>Payee</li>
-                    <li>Running Balance</li>
-                </ul>
-
-            </div>
-
-
-            <!-- Backup -->
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    🔐
-                </div>
-
-                <h3>
-                    Secure Backup
-                </h3>
-
-                <p>
-                    Create and restore encrypted local and cloud backups.
-                </p>
-
-                <ul>
-                    <li>Encrypted Local Backup</li>
-                    <li>Backup Restore</li>
-                    <li>AES-256-GCM</li>
-                    <li>PBKDF2-HMAC-SHA256</li>
-                    <li>Google Drive Backup</li>
-                    <li>Automatic Backup</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SECURITY ================= -->
-
-<section class="security" id="security">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>
-                Security & Privacy
-            </h2>
-
-            <p>
-                My Spend provides security-focused features for protecting
-                access to your financial records and backups.
-            </p>
-
-        </div>
-
-
-        <div class="security-grid">
-
-            <div class="security-card">
-
-                <h3>
-                    🔒 App Lock
-                </h3>
-
-                <p>
-                    Protect access to the application using a 4–6 digit
-                    PIN and supported biometric authentication.
-                </p>
-
-            </div>
-
-
-            <div class="security-card">
-
-                <h3>
-                    🔐 Encrypted Backups
-                </h3>
-
-                <p>
-                    Backup functionality supports AES-256-GCM encryption
-                    with PBKDF2-HMAC-SHA256-based key derivation.
-                </p>
-
-            </div>
-
-
-            <div class="security-card">
-
-                <h3>
-                    ☁️ Google Drive Backup
-                </h3>
-
-                <p>
-                    Optional Google Drive backup and restore allows users
-                    to keep encrypted My Spend backup data in their
-                    selected Google Drive account.
-                </p>
-
-            </div>
-
-
-            <div class="security-card">
-
-                <h3>
-                    📱 Local Data
-                </h3>
-
-                <p>
-                    My Spend is designed primarily for personal financial
-                    record management on the user's device.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PERMISSIONS ================= -->
-
-<section class="permissions">
-
-    <div class="section-container">
-
-        <div class="section-title">
-
-            <h2>
-                App Permissions
-            </h2>
-
-            <p>
-                Certain permissions are used only when the corresponding
-                feature requires them.
-            </p>
-
-        </div>
-
-
-        <table class="permission-table">
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Permission
-                    </th>
-
-                    <th>
-                        Purpose
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>
-                        SMS
-                    </td>
-
-                    <td>
-                        Bank and credit-card SMS transaction detection
-                        and automatic processing.
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Contacts
-                    </td>
-
-                    <td>
-                        Selecting a Payee from device contacts.
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        File / Storage Access
-                    </td>
-
-                    <td>
-                        Local encrypted backup and restore functionality.
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Biometric
-                    </td>
-
-                    <td>
-                        Fingerprint or supported biometric app unlocking.
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Internet
-                    </td>
-
-                    <td>
-                        Google Sign-In and Google Drive backup/restore.
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>
-                        Background Processing
-                    </td>
-
-                    <td>
-                        Supported automatic and background functionality,
-                        including SMS-related processing.
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CTA ================= -->
-
-<section class="cta">
-
-    <div class="section-container">
-
-        <h2>
-            Take Control of Your Finances
-        </h2>
+        <h1>
+            Welcome to <span>justbuilt.in</span>
+        </h1>
 
         <p>
-            Organize your income, expenses, accounts, credit cards,
-            EMIs, Udhar, reports, statements, and backups with My Spend.
+            Explore applications and digital projects developed
+            to make everyday tasks simpler, smarter and more convenient.
         </p>
 
-        <a href="#features"
-           class="button">
-            Explore My Spend
-        </a>
+        <div class="hero-buttons">
 
-    </div>
+            <a href="/myspend/" class="btn btn-primary">
+                Explore My Spend
+            </a>
 
-</section>
+            <a href="#applications" class="btn btn-secondary">
+                View Applications
+            </a>
+
+        </div>
+
+    </section>
 
 
-<!-- ================= LEGAL ================= -->
-
-<section class="legal" id="legal">
-
-    <div class="section-container">
+    <!-- APPLICATIONS -->
+    <section class="section" id="applications">
 
         <div class="section-title">
 
-            <h2>
-                Legal & Privacy
-            </h2>
+            <h2>Applications</h2>
 
             <p>
-                Please review the documents that govern your use of
-                My Spend.
+                Explore applications available on justbuilt.in
             </p>
 
         </div>
 
 
-        <div class="legal-grid">
+        <div class="app-card">
 
+            <div class="app-info">
 
-            <div class="legal-card">
+                <div class="app-icon">
+                    💰
+                </div>
 
-                <h3>
-                    Privacy Policy
-                </h3>
-
-                <p>
-                    Learn how My Spend accesses, uses, stores, and
-                    protects information and how optional permissions
-                    are used.
-                </p>
-
-                <a href="/myspend/privacy-policy.html">
-                    Read Privacy Policy →
-                </a>
-
-            </div>
-
-
-            <div class="legal-card">
-
-                <h3>
-                    Terms of Service
-                </h3>
+                <h3>My Spend</h3>
 
                 <p>
-                    Read the terms and conditions governing your use of
-                    the My Spend application.
+                    A personal finance management application
+                    designed to help you manage expenses, income,
+                    accounts, credit cards, EMI, transactions,
+                    payees and backups in one place.
                 </p>
 
-                <a href="/myspend/terms-of-service.html">
-                    Read Terms of Service →
+                <a href="/myspend/" class="app-link">
+                    Open My Spend →
                 </a>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ================= FOOTER ================= -->
+    <!-- FEATURES -->
+    <section class="section">
 
-<footer>
+        <div class="section-title">
 
-    <div class="footer-container">
+            <h2>My Spend</h2>
 
-        <div>
+            <p>
+                Main application capabilities
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card">
+                <h3>💳 Accounts</h3>
+                <p>
+                    Manage bank accounts, cash accounts
+                    and credit cards.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📊 Reports</h3>
+                <p>
+                    Track income, expenses and financial
+                    activity with reports.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>💰 EMI</h3>
+                <p>
+                    Manage EMI transactions, interest,
+                    processing fees and due reminders.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>📱 SMS Auto Fetch</h3>
+                <p>
+                    Process supported bank and credit-card
+                    SMS messages for transaction detection.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🤝 Udhar</h3>
+                <p>
+                    Manage payees, amounts given or received,
+                    balances and due dates.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🔐 Secure Backup</h3>
+                <p>
+                    Supports encrypted local backup and
+                    Google Drive backup and restore.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+
+        <div class="section-title">
+
+            <h2>About justbuilt.in</h2>
+
+            <p>
+                A home for applications and digital projects.
+            </p>
+
+        </div>
+
+        <div class="app-card">
+
+            <div class="app-info">
+
+                <h3>Building useful digital tools</h3>
+
+                <p>
+                    justbuilt.in provides a simple place to
+                    discover applications and projects developed
+                    for practical everyday use.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+
+        <div class="section-title">
+
+            <h2>Contact</h2>
+
+            <p>
+                For application-related information,
+                please use the contact details provided
+                on the respective application pages.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-container">
 
             <div class="footer-brand">
-                My Spend
+
+                <h3>justbuilt.in</h3>
+
+                <p>
+                    Applications and digital projects
+                    built for practical everyday use.
+                </p>
+
             </div>
 
-            <p class="footer-text">
-                A personal finance management application for tracking
-                expenses, income, accounts, credit cards, EMIs, Udhar,
-                reports, statements, and backups.
-            </p>
+
+            <div class="footer-links">
+
+                <a href="/">Home</a>
+
+                <a href="/myspend/">
+                    My Spend
+                </a>
+
+                <a href="/myspend/privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="/myspend/terms-of-service.html">
+                    Terms of Service
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="footer-links">
-
-            <a href="/myspend/privacy-policy.html">
-                Privacy Policy
-            </a>
-
-            <a href="/myspend/terms-of-service.html">
-                Terms of Service
-            </a>
-
+        <div class="copyright">
+            © 2026 justbuilt.in. All rights reserved.
         </div>
 
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 My Spend. All rights reserved.
-
-    </div>
-
-</footer>
-
+    </footer>
 
 </body>
 </html>
