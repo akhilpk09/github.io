@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Sheet - Business Management App</title>
+
+    <meta name="description"
+          content="Job Sheet is a business management application for managing customers, job sheets, technicians, items, stock, purchases, suppliers, invoices, debit notes, and completed work.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            padding: 80px 25px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0 0 20px;
+            color: #222;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #555;
+            max-width: 750px;
+            margin: 0 auto 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 24px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .button.secondary {
+            background: #ffffff;
+            color: #4f46e5;
+            border: 1px solid #4f46e5;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .feature p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .workflow {
+            background: #ffffff;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .workflow-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .number {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            margin: 0 auto 15px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .business-box {
+            background: #eef2ff;
+            padding: 35px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .business-box h2 {
+            margin-top: 0;
+        }
+
+        .business-box p {
+            max-width: 750px;
+            margin: auto auto 25px;
+            color: #555;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .links a {
+            margin: 0 10px;
+            color: #3157d5;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workflow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="nav">
+
+        <a href="/" class="logo">
+            Job<span>Sheet</span>
+        </a>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/applications/">Applications</a>
+            <a href="/My-Spend/">My Spend</a>
+            <a href="/Job-Sheet/">Job Sheet</a>
+            <a href="/Job-Sheet/privacy-policy.html">
+                Privacy
+            </a>
+            <a href="/Job-Sheet/terms-of-service.html">
+                Terms
+            </a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Manage Your Business with
+            <span>Job Sheet</span>
+        </h1>
+
+        <p>
+            A simple business management application designed to help you
+            manage customers, job sheets, technicians, items, stock,
+            purchases, suppliers, invoices, debit notes, and completed work
+            in one place.
+        </p>
+
+        <a href="#features" class="button">
+            Explore Features
+        </a>
+
+        <a href="#about" class="button secondary">
+            Learn More
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="about">
+
+    <div class="section-title">
+
+        <h2>Everything You Need to Manage Your Jobs</h2>
+
+        <p>
+            Job Sheet brings important day-to-day business records and
+            job management features together in one application.
+        </p>
+
+    </div>
+
+    <div class="business-box">
+
+        <h2>Organize. Manage. Track.</h2>
+
+        <p>
+            Create and manage jobs, keep customer information organized,
+            assign technicians, manage items and stock, record purchases,
+            maintain supplier information, create invoices and debit notes,
+            and keep track of completed work.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="features">
+
+    <div class="section-title">
+
+        <h2>Key Features</h2>
+
+        <p>
+            Job Sheet provides tools designed around everyday business
+            operations and job management.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <h3>Job Sheet Management</h3>
+
+            <p>
+                Create, edit, manage, and track customer job sheets from
+                one place.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Job Status</h3>
+
+            <p>
+                Keep track of work using job statuses such as Pending,
+                In Progress, Ready, and Delivered.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Customer Management</h3>
+
+            <p>
+                Maintain customer information and connect customer details
+                with their related jobs and business records.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Technician Management</h3>
+
+            <p>
+                Add technicians and associate them with relevant jobs to
+                help organize your work.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Items & Stock</h3>
+
+            <p>
+                Manage item information and keep track of stock records
+                used in your business.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Purchase Management</h3>
+
+            <p>
+                Maintain purchase records and view your purchase list
+                for better business organization.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Supplier Management</h3>
+
+            <p>
+                Maintain supplier information and connect supplier details
+                with purchase records.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Invoice Management</h3>
+
+            <p>
+                Create and manage invoice records and maintain an organized
+                invoice list.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Debit Notes</h3>
+
+            <p>
+                Create and maintain debit note records as part of your
+                business workflow.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Completed Work</h3>
+
+            <p>
+                Keep a separate record of completed jobs and completed
+                business work.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Customer Calling</h3>
+
+            <p>
+                Use customer phone information to quickly initiate calls
+                directly from the application.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>WhatsApp Communication</h3>
+
+            <p>
+                Use WhatsApp to communicate with customers, including
+                job-related status reminders and messages.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Print Job Sheets</h3>
+
+            <p>
+                Generate and print job-related documents using information
+                maintained in the application.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Business Data</h3>
+
+            <p>
+                Maintain business-related records and organize important
+                information within your business account.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Cloud Data</h3>
+
+            <p>
+                Supported business information can be stored and
+                synchronized using cloud services.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>Secure Account Access</h3>
+
+            <p>
+                Account authentication helps protect access to your
+                business information and application features.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="workflow">
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>Simple Business Workflow</h2>
+
+            <p>
+                Organize your everyday job management process in a
+                straightforward workflow.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+
+            <div class="workflow-item">
+
+                <div class="number">1</div>
+
+                <h3>Create Job</h3>
+
+                <p>
+                    Add customer and job details to create a new job sheet.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-item">
+
+                <div class="number">2</div>
+
+                <h3>Manage Work</h3>
+
+                <p>
+                    Assign technicians, manage items, and update the job
+                    status as work progresses.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-item">
+
+                <div class="number">3</div>
+
+                <h3>Complete Job</h3>
+
+                <p>
+                    Mark the job as ready or delivered and maintain the
+                    completed work record.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-item">
+
+                <div class="number">4</div>
+
+                <h3>Invoice & Communicate</h3>
+
+                <p>
+                    Manage invoices and communicate with customers using
+                    available calling and WhatsApp features.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="business-box">
+
+        <h2>Built for Everyday Business Management</h2>
+
+        <p>
+            Job Sheet helps bring jobs, customers, technicians, stock,
+            purchases, suppliers, invoices, and other business records
+            together so that your day-to-day work can be managed from
+            one application.
+        </p>
+
+        <a href="#features" class="button">
+            View Features
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Job Sheet</h2>
+
+        <p>
+            Business management made simple.
+        </p>
+
+    </div>
+
+
+    <div class="links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/applications/">
+            Applications
+        </a>
+
+        <a href="/My-Spend/">
+            My Spend
+        </a>
+
+        <a href="/Job-Sheet/privacy-policy.html">
+            Privacy Policy
+        </a>
+
+        <a href="/Job-Sheet/terms-of-service.html">
+            Terms of Service
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 Job Sheet. All rights reserved.
+
+    <br>
+
+    Job Sheet is a business management application.
+
+</footer>
+
+
+</body>
+</html>
